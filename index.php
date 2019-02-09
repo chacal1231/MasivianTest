@@ -153,7 +153,7 @@ class BST {
 }// end class BT 
  
 function CreateTree() {
-	$bst = new BST(); 
+    $bst = new BST(); 
     $bst->insert(70);
     $bst->insert(49);
     $bst->insert(84);
@@ -166,13 +166,32 @@ function CreateTree() {
     $bst->insert(51);
     $bst->insert(76);
     $bst->insert(80);
-  
-    //print_r($bst);
-    echo "PreOrder Traversal : \n";
-    $bst->preOrder($bst->getRoot()); // display Tree in PreOrder
+    echo "Binary Tree (PreOrder) : \n";
+    $bst->preOrder($bst->getRoot());
     echo "\n";
 }
-if($_POST['CreateTree']==1){
-	CreateTree();
+function LCA($n1,$n2) {
+    $bst = new BST(); 
+    $bst->insert(70);
+    $bst->insert(49);
+    $bst->insert(84);
+    $bst->insert(37);
+    $bst->insert(54);
+    $bst->insert(78);
+    $bst->insert(85);
+    $bst->insert(22);
+    $bst->insert(40);
+    $bst->insert(51);
+    $bst->insert(76);
+    $bst->insert(80);
+    echo "Lowest Common Ancestor(LCA) of a BST for $n1 and $n2 is :\n";
+    $bst->iterativeLCA($bst->getRoot(), $n1, $n2);
+}
+if($_GET['CreateTree']=="1"){
+    CreateTree();
+}elseif(isset($_GET['Ancestor'])){
+    $Ancestor=explode(";",$_GET['Ancestor']);
+    LCA($Ancestor[0],$Ancestor[1]);
+
 }
 ?>
